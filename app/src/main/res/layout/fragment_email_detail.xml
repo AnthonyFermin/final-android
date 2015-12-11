@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/email_from_img"
@@ -9,44 +9,44 @@
         android:layout_height="60dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:scaleType="centerCrop"
-        />
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/email_from"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/email_from_img"
-        />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/email_subject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/email_from"
         android:layout_marginLeft="@dimen/email_detail_left_margin"
         android:text="@string/email_subject"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_below="@id/email_from"
-        />
-
-  <TextView
-      android:id="@+id/email_sent"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginLeft="@dimen/email_detail_left_margin"
-      android:layout_below="@id/email_subject"
-      />
-
-    <!-- TODO: this won't work with longer email bodies; implementi scrolling -->
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/email_body"
+        android:id="@+id/email_sent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/email_subject"
+        android:layout_marginLeft="@dimen/email_detail_left_margin" />
+
+    <!-- TOD: this won't work with longer email bodies; implementi scrolling -->
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/email_body"
-        android:layout_marginLeft="@dimen/email_detail_left_margin"
-        android:layout_below="@+id/email_sent"
-        />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/email_body"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/email_sent"
+            android:layout_marginLeft="@dimen/email_detail_left_margin"
+            android:text="@string/email_body" />
+    </ScrollView>
 
 </RelativeLayout>

@@ -3,9 +3,10 @@
     package="nyc.c4q.android"
     >
 
-  <!-- TODO add permission to connect to the internet -->
+  <!-- TOD add permission to connect to the internet -->
+    <uses-permission android:name="ANDROID.PERMISSION.INTERNET"/>
 
-  <application
+  <application>
       android:name=".EmailApplication"
       android:allowBackup="true"
       android:icon="@drawable/c4q"
@@ -14,8 +15,16 @@
       android:theme="@style/AppTheme"
       >
 
-    <!-- TODO add main launcher activity -->
+      <!-- TOD add main launcher activity -->
+    <activity android:name=".ui.LoginActivity"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
     <activity
         android:name=".ui.EmailListActivity"
         android:label="@string/title_email_list"

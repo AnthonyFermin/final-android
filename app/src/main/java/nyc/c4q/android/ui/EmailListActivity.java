@@ -37,17 +37,25 @@ public class EmailListActivity extends FragmentActivity implements EmailListFrag
 
   @Override
   public void onEmailSelected(Email email) {
+    FragmentManager fm = getSupportFragmentManager();
     if (isTwoPane) {
       // tablet - single activity with list and detail
 
-      // TODO - use EmailDetailFragment's factory method to create the fragment
+      // TOD - use EmailDetailFragment's factory method to create the fragment
       // then add the fragment to the SupportFragmentManager under R.id.email_detail_container
+
+      fm.beginTransaction()
+              .add(R.id.email_detail_container, EmailDetailFragment.newInstance(email), null)
+              .commit();
 
     }
     else {
       // mobile - one activity at a time
 
-      // TODO - launch EmailDetailActivity passing "email" extra
+      // TOD - launch EmailDetailActivity passing "email" extra
+      fm.beginTransaction()
+              .add(R.id.fragment_email_list, EmailDetailFragment.newInstance(email), null)
+              .commit();
     }
   }
 }

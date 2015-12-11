@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
+
 import com.squareup.picasso.Picasso;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -25,23 +27,36 @@ public class EmailDetailFragment extends Fragment {
       Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_email_detail, container, false);
 
-    // TODO - get references to views
+    // TOD - get references to views
+    ImageView emailFromIV = (ImageView) view.findViewById(R.id.email_from_img);
+    TextView emailSubjectTV = (TextView) view.findViewById(R.id.email_subject);
+    TextView emailBodyTV = (TextView) view.findViewById(R.id.email_body);
+    TextView emailSentTV = (TextView) view.findViewById(R.id.email_sent);
+    TextView emailFromTV = (TextView) view.findViewById(R.id.email_from);
 
-    // TODO - replace nulls
-    Picasso.with(getActivity()).load((String) null).into((ImageView) null);
+    // TOD - replace nulls
+    Picasso.with(getActivity()).load(email.getFromUrl()).into(emailFromIV);
 
-    // TODO - bind email data to views
+    // TOD - bind email data to views
+
+    emailSubjectTV.setText(email.getSubject());
+    emailBodyTV.setText(email.getBody());
+    emailFromTV.setText(email.getFrom());
+    emailSentTV.setText(formatter.format(email.getSent()));
 
     return view;
   }
 
   public static EmailDetailFragment newInstance(Email email) {
-    // TODO - implement this factory method
+    // TOD - implement this factory method
     // create fragment, set up its only argument (the email) and return it
+
+
 
     // hint
     //args.putSerializable("email", email);
-
-    return null;
+    EmailDetailFragment frag = new EmailDetailFragment();
+    frag.email = email;
+    return frag;
   }
 }
